@@ -17,10 +17,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.outlab9.AddActivity;
-import com.example.outlab9.AddActivityEx;
-import com.example.outlab9.AddActivityLe;
+import com.example.outlab9.AddActivityA;
 import com.example.outlab9.CustomAdapter;
-import com.example.outlab9.CustomAdapterLE;
+import com.example.outlab9.CustomAdapterAS;
 import com.example.outlab9.MainActivity;
 import com.example.outlab9.MyCoreDatabase;
 import com.example.outlab9.R;
@@ -32,7 +31,7 @@ import java.util.ArrayList;
 /**
  * A simple {@link Fragment} subclass..
  */
-public class LecturesFragment extends Fragment {
+public class AssignmentsFragment extends Fragment {
 
     RecyclerView recyclerView;
     FloatingActionButton add_button;
@@ -41,8 +40,8 @@ public class LecturesFragment extends Fragment {
     MyCoreDatabase myCoreDatabase;
     ArrayList<String> event_id, event_title, event_course,event_type,
             event_description, event_date, event_time;
-    CustomAdapterLE customAdapterLE;
-    public LecturesFragment() {
+    CustomAdapterAS customAdapterAS;
+    public AssignmentsFragment() {
         // Required empty public constructor
     }
 
@@ -50,16 +49,16 @@ public class LecturesFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_lectures, container, false);
-        recyclerView = view.findViewById(R.id.LectureRecyclerView);
-        add_button = view.findViewById(R.id.addButtonLecture);
+        View view = inflater.inflate(R.layout.fragment_assignments, container, false);
+        recyclerView = view.findViewById(R.id.AssignmentRecyclerView);
+        add_button = view.findViewById(R.id.addButtonAssignment);
         empty_imageView = view.findViewById(R.id.empty_image);
         no_data = view.findViewById(R.id.NoData_text);
 
         add_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getActivity(), AddActivityLe.class);
+                Intent intent = new Intent(getActivity(), AddActivityA.class);
                 startActivity(intent);
             }
         });
@@ -74,9 +73,9 @@ public class LecturesFragment extends Fragment {
 
         storeDataInArrays();
 
-        customAdapterLE = new CustomAdapterLE(getActivity(), getContext(),
+        customAdapterAS = new CustomAdapterAS(getActivity(), getContext(),
                 event_id, event_title, event_course, event_type, event_description, event_date, event_time);
-        recyclerView.setAdapter(customAdapterLE);
+        recyclerView.setAdapter(customAdapterAS);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
 
         return view;
@@ -85,7 +84,7 @@ public class LecturesFragment extends Fragment {
     public void onActivityResult(int requestCode, int resultCode, @Nullable @org.jetbrains.annotations.Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if(requestCode == 1){
-            getFragmentManager().beginTransaction().detach(LecturesFragment.this).attach(LecturesFragment.this).commit();
+            getFragmentManager().beginTransaction().detach(AssignmentsFragment.this).attach(AssignmentsFragment.this).commit();
         }
     }
 
@@ -97,7 +96,7 @@ public class LecturesFragment extends Fragment {
     }
 
     void storeDataInArrays(){
-        int type = 4;
+        int type = 2;
         Cursor cursor = myCoreDatabase.readAllData(type);
         if(cursor.getCount() == 0){
             empty_imageView.setVisibility(View.VISIBLE);
