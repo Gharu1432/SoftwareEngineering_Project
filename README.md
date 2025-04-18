@@ -48,5 +48,5 @@
 - We used the calendar view provided by Android Studio for displaying the calendar
 
 ### Side Navigation Drawer
-- Student can use the side navigation drawer to switch between the aforementioned Home and Calendar screens
+- Student can use the side navigation drawer to switch between the aforementioned Home and calender screens.
 
