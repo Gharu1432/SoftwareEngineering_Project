@@ -45,7 +45,7 @@
 
 ### Calendar
 - Calendar screen displays a calendar and once a date is selected on the calendar, the user can see below the calendar, the number of study plans, assignments, exams, and lectures scheduled for that date
-- We used the calendar view provided by Android Studio for displaying the calendar
+- We used the calendar view provided by Android Studio for displaying the calender
 
 ### Side Navigation Drawer
 - Student can use the side navigation drawer to switch between the aforementioned Home and calender screens.
